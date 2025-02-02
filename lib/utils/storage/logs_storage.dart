@@ -17,12 +17,11 @@ class LogsStorage {
   Future<String?> get _localPath async {
     var directory;
 
-    if (Platform.isIOS) {
-      directory = await getApplicationDocumentsDirectory();
-    } else {
+    if (Platform.isAndroid) {
       directory = await getExternalStorageDirectory();
+    } else {
+      directory = await getApplicationDocumentsDirectory();
     }
-
     return directory.path;
   }
 
